@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 
 	va_start(arg, format);
 
-	for(i = 0; format[i]; i++)
+	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
 		{
@@ -27,7 +27,8 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == 's')
 			{
-				count = count + write(1, &(va_arg(arg, * char)), _strlen(va_arg(arg, * char)));
+				count = count +
+					write(1, &(va_arg(arg, *char)), _strlen(va_arg(arg, *char)));
 			}
 			else if (format[i] == '%')
 			{
@@ -40,9 +41,7 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
-		{
 			count = count + write(1, &format[i], 1);
-		}
 	}
 	va_end(arg);
 	return (count);
@@ -55,15 +54,11 @@ int _printf(const char *format, ...)
  *
  * Return: the length
  */
-
 int _strlen(char *s)
 {
 	int len = 0;
 
-	while(*s++)
-	{
+	while (*s++)
 		len++;
-	}
-
 	return (len);
 }
