@@ -90,7 +90,7 @@ int num_print_left(char *str, parameters_t *parameters);
 
 void parameters_initial(parameters_t *parameters, va_list p);
 
-int from_to(char *start, char *stop, char *exec);
+int from_to(char *from, char *to, char *except);
 int rev_print(va_list p, parameters_t *parameters);
 int rot13_print(va_list p, parameters_t *parameters);
 
