@@ -94,7 +94,7 @@ int from_to(char *start, char *stop, char *exec);
 int rev_print(va_list p, parameters_t *parameters);
 int rot13_print(va_list p, parameters_t *parameters);
 
-char *prec(char *ptr, parameters_t *parameters, va_list p);
+char *got_prec(char *s, parameters_t *parameters, va_list p);
 
 int _printf(const char *format, ...);
 
