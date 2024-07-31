@@ -9,36 +9,36 @@ int _printf(const char *format, ...)
 {
 	va_list arg;
 	int count = 0;
-	int i;
-	char *s;
+	char *s, i;
+	parameters_t parameters = parameters_initiation;
 
 	va_start(arg, format);
-	for (i = 0; format[i]; i++)
+
+	if ((format[0] == '%' && !format[1]) || !format)
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
+	for (s = (char *)format; *s; s++)
 	{
-		if (format[i] == '%')
+		parameters_initiation(&parameters, arg);
+		if (*s != '%')
 		{
-			i++;
-			if (format[i] == 'c')
-				count = count + write(1, &(va_arg(arg, int)), 1);
-			else if (format[i] == 's')
-			{
-				s = va_arg(arg, char *);
-				if (s)
-					count = count + write(1, str, _strlen(s));
-				else
-					count = count + write(1, "(null)", 6);
-			}
-			else if (format[i] == '%')
-				count = count + write(1, '%', 1);
-			else
-			{
-				count = count + write(1, &format[i - 1], 1);
-				i--;
-			}
+			count = count + _putchar(*s);
+			continue;
 		}
+		i = s;
+		s++;
+		while (got_flag(s, &parameters))
+		{
+			s++;
+		}
+		if (!got_spec(s))
+			count = count + from_to(i, s, parameters.l_mod || 
+				parameters.h_mod ? s - 1 : 0);
 		else
-			count = count + write(1, &format[i], 1);
+			count = count + got_print(s, arg, &parameters);
 	}
+	_putchar(buffer_flush);
 	va_end(arg);
 	return (count);
 }

@@ -77,10 +77,10 @@ int got_flag(char *s, parameters_t *parameters);
 int got_modifier(char *s, parameters_t *parameters);
 char *got_width(char *s, parameters_t *parameters, va_list p);
 
-int hex(va_list p, parameters_t *parameters);
-int HEX(va_list p, parameters_t *parameters);
-int bin(va_list p, parameters_t *parameters);
-int oct(va_list p, parameters_t *parameters);
+int hex_print(va_list p, parameters_t *parameters);
+int HEX_print(va_list p, parameters_t *parameters);
+int bin_print(va_list p, parameters_t *parameters);
+int oct_print(va_list p, parameters_t *parameters);
 
 int _strlen(char *s);
 int num_print(char *str, parameters_t *parameters);
@@ -91,8 +91,8 @@ int num_print_left(char *str, parameters_t *parameters);
 void parameters_initial(parameters_t *parameters, va_list p);
 
 int from_to(char *start, char *stop, char *exec);
-int rev(va_list p, parameters_t *parameters);
-int rot13(va_list p, parameters_t *parameters);
+int rev_print(va_list p, parameters_t *parameters);
+int rot13_print(va_list p, parameters_t *parameters);
 
 char *prec(char *ptr, parameters_t *parameters, va_list p);
 
