@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 	va_list arg;
 	int count = 0;
 	char *s, i;
-	parameters_t parameters = parameters_initiation;
+	parameters_t parameters = PARAMETERS_INITIATION;
 
 	va_start(arg, format);
 
@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	for (s = (char *)format; *s; s++)
 	{
-		parameters_initiation(&parameters, arg);
+		PARAMETERS_INITIATION(&parameters, arg);
 		if (*s != '%')
 		{
 			count = count + _putchar(*s);
