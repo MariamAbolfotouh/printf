@@ -34,6 +34,10 @@ int _printf(const char *format, ...)
 		{
 			s++;
 		}
+		s = got_width(s, &patameters, arg);
+		s = got_prec(s, &parameters, arg);
+		if (!got_modifier(s, &parameters))
+			s++;
 		if (!got_spec(s))
 			count = count + from_to(i, s, parameters.l_mod ||
 				parameters.h_mod ? s - 1 : 0);
