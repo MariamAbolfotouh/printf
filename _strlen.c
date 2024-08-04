@@ -37,73 +37,73 @@ int _isdigit(int c)
  * num_print - print num
  *
  * @str: num as str
- * @parameters: parameters struct
+ * @params: parameters struct
  *
  * Return: chars
  */
 
-int num_print(char *str, parameters_t *parameters)
+int num_print(char *str, params_t *params)
 {
 	unsigned int i = _strlen(str);
-	int j = (!parameters->unsign && *str == '-');
+	int j = (!params->unsign && *str == '-');
 
-	if (!parameters->precision && *str == '0' && !str[1])
+	if (!params->precision && *str == '0' && !str[1])
 		str = "";
 	if (j)
 	{
 		str++;
 		i--;
 	}
-	if (parameters->precision != UINT_MAX)
-		while (i++ < parameters->precision)
+	if (params->precision != UINT_MAX)
+		while (i++ < params->precision)
 			*--str= '0';
 	if (j)
 		*--str = '-';
-	if (!parameters->minus_flag)
-		return (num_print_right(str, parameters));
+	if (!params->minus_flag)
+		return (num_print_right(str, params));
 	else
-		return (num_print_left(str, parameters));
+		return (num_print_left(str, params));
 }
 
 /**
  * num_print_right - print num with options
  *
  * @str: base num
- * @parameters: parameters struct
+ * @params: parameters struct
  *
  * Return: printed chars
  */
 
-int num_print_right(char *str, parameters_t *parameters)
+int num_print_right(char *str, params_t *params)
 {
 	unsigned int n = 0, n1, n2, i = _strlen(str);
 	char c = ' ';
 
-	if (parameters->zero_flag && !parameters->minus_flag)
+	if (params->zero_flag && !params->minus_flag)
 		c = '0';
-	n1 = n2 = (!parameters->unsign && *str == '-');
-	if (n1 && i < parameters->width && c == '0' && !parameters->minus_flag)
+	n1 = n2 = (!params->unsign && *str == '-');
+	if (n1 && i < params->width && c == '0' && !params->minus_flag)
 		str++;
 	else
 		n1 = 0;
-	if ((parameters->plus_flag && !n2) ||
-		(!parameters->plus_flag && parameters->space_flag && !n2))
+	if ((params->plus_flag && !n2) ||
+		(!params->plus_flag && params->space_flag && !n2))
 		i++;
 	if (n1 && c == '0')
 		n = n + _putchar('-');
-	if (parameters->plus_flag && !n2 && c == '0' && !parameters->unsign)
+	if (params->plus_flag && !n2 && c == '0' && !params->unsign)
 		n = n + _putchar('+');
-	else if (!parameters->plus_flag && parameters->space_flag && !n2 &&
-		!parameters->unsign && parameters->zero_flag)
+	else if (!params->plus_flag && params->space_flag && !n2 &&
+		!params->unsign && params->zero_flag)
 		n = n + _putchar(' ');
-	while (i++ < parameters->width)
+	while (i++ < params->width)
 		n += _putchar(c);
 	if (n1 && c == ' ')
 		n += _putchar('-');
-	if (parameters->plus_flag && !n2 && c == ' ' && !parameters->unsign)
+	if (params->plus_flag && !n2 && c == ' ' && !params->unsign)
 		n += _putchar('+');
-	else if (!parameters->plus_flag && parameters->space_flag && !n2 &&
-		!parameters->unsign && !parameters->zero_flag)
+	else if (!params->plus_flag && params->space_flag && !n2 &&
+		!params->unsign && !params->zero_flag)
 		n += _putchar(' ');
 	n += _puts(str);
 	return (n);
@@ -113,29 +113,29 @@ int num_print_right(char *str, parameters_t *parameters)
  * num_print_left - print num with options
  *
  * @str: base num
- * @parameters: parameters struct
+ * @params: parameters struct
  *
  * Return: printed chars
  */
 
-int num_print_left(char *str, parameters_t *parameters)
+int num_print_left(char *str, params_t *params)
 {
 	unsigned int n = 0, n1, n2, i = _strlen(str);
 	char c = ' ';
 
-	if (parameters->zero_flag && !parameters->minus_flag)
+	if (params->zero_flag && !params->minus_flag)
 		c = '0';
-	n1 = n2 = (!parameters->unsign && *str == '-');
-	if (n1 && i < parameters->width && c == '0' && !parameters->minus_flag)
+	n1 = n2 = (!params->unsign && *str == '-');
+	if (n1 && i < params->width && c == '0' && !params->minus_flag)
 		str++;
 	else
 		n1 = 0;
-	if (parameters->plus_flag && !n2 && !parameters->unsign)
+	if (params->plus_flag && !n2 && !params->unsign)
 		n += _putchar('+'), i++;
-	else if (parameters->space_flag && !n2 && !parameters->unsign)
+	else if (params->space_flag && !n2 && !params->unsign)
 		n = n + _putchar(' '), i++;
 	n += _puts(str);
-	while (i++ < parameters->width)
+	while (i++ < params->width)
 		n += _putchar(c);
 	return (n);
 }
