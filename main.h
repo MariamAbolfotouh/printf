@@ -10,11 +10,11 @@
 #define op_buffer_size 1024
 #define buffer_flush -1
 
-#define null_string null
+#define NULL_STRING "(null)"
 #define parameters_initiation {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
-#define lowercase_convert 1
-#define unsinged_convert 2
+#define CONVERT_LOWERCASE	1
+#define CONVERT_UNSIGN	2
 
 /**
  * struct parameters - the parameters of struct
