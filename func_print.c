@@ -70,7 +70,7 @@ int string_print(va_list p, parameters_t *parameters)
 
 	if (parameters->minus_flag)
 	{
-		if (parameters->precision != UNIT_MAX)
+		if (parameters->precision != UINT_MAX)
 			for (i = 0; i < pad; i++)
 				count += _putchar(*s++);
 		else
@@ -80,7 +80,7 @@ int string_print(va_list p, parameters_t *parameters)
 		count += _putchar(c);
 	if (!parameters->minus_flag)
 	{
-		if (parameters->precision != UNIT_MAX)
+		if (parameters->precision != UINT_MAX)
 			for (i = 0; i < pad; i++)
 				count += _putchar(*s++);
 		else

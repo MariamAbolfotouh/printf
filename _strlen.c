@@ -54,7 +54,7 @@ int num_print(char *str, parameters_t *parameters)
 		str++;
 		i--;
 	}
-	if (parameters->precision != UNIT_MAX)
+	if (parameters->precision != UINT_MAX)
 		while (i++ < parameters->precision)
 			*--str= '0';
 	if (j)

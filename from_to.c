@@ -40,11 +40,11 @@ int rev_print(va_list p, parameters_t *parameters)
 
 	if (s)
 	{
-		for (i = 0, *s; s++)
+		for (i = 0; *s; s++)
 			i++;
 		s--;
 		for (; i > 0; i--, s--)
-			count = count + _putchar(*str);
+			count = count + _putchar(*s);
 	}
 	return (count);
 }

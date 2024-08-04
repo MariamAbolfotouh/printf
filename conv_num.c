@@ -29,7 +29,7 @@ int hex_print(va_list p, parameters_t *parameters)
 		*--s = '0';
 	}
 	parameters->unsign = 1;
-	return (j += num_print(s, parameters);
+	return (j += num_print(s, parameters));
 }
 
 /**
@@ -61,7 +61,7 @@ int HEX_print(va_list p, parameters_t *parameters)
 		*--s = '0';
 	}
 	parameters->unsign = 1;
-	return (j += num_print(s, parameters);
+	return (j += num_print(s, parameters));
 }
 
 /**

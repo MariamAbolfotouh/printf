@@ -16,7 +16,7 @@ void parameters_initiation(parameters_t *parameters, va_list arg)
 	parameters->hashtag_flag = 0;
 	parameters->zero_flag = 0;
 	parameters->width = 0;
-	parameters->precision = UNIT_MAX;
+	parameters->precision = UINT_MAX;
 	parameters->h_mod = 0;
 	parameters->l_mod = 0;
 	(void)arg;
