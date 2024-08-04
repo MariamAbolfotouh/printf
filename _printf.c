@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 	va_list arg;
 	int count = 0;
 	char *s, *i;
-	parameters_t parameters = PARAMETERS_INITIATION;
+	params_t params = PARAMETERS_INITIATION;
 
 	va_start(arg, format);
 
@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	for (s = (char *)format; *s; s++)
 	{
-		parameters_initial(&parameters, arg);
+		parameters_initial(&params, arg);
 		if (*s != '%')
 		{
 			count = count + _putchar(*s);
@@ -30,19 +30,19 @@ int _printf(const char *format, ...)
 		}
 		i = s;
 		s++;
-		while (got_flag(s, &parameters))
+		while (got_flag(s, &params))
 		{
 			s++;
 		}
-		s = got_width(s, &parameters, arg);
-		s = got_prec(s, &parameters, arg);
-		if (!got_modifier(s, &parameters))
+		s = got_width(s, &params, arg);
+		s = got_prec(s, &params, arg);
+		if (!got_modifier(s, &params))
 			s++;
 		if (!got_spec(s))
-			count = count + from_to(i, s, parameters.l_mod ||
-				parameters.h_mod ? s - 1 : 0);
+			count = count + from_to(i, s, params.l_mod ||
+				params.h_mod ? s - 1 : 0);
 		else
-			count = count + got_print(s, arg, &parameters);
+			count = count + got_print(s, arg, &params);
 	}
 	_putchar(buffer_flush);
 	va_end(arg);

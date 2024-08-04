@@ -8,9 +8,9 @@
  * Return: number of bytes
  */
 
-int (*got_spec(char *s))(va_list p, parameters_t *parameters)
+int (*got_spec(char *s))(va_list p, params_t *params)
 {
-	spec_t specifier[] = {
+	specifier_t specifiers[] = {
 		{"c", char_print},
 		{"s", string_print},
 		{"%", percent_print},
@@ -29,11 +29,11 @@ int (*got_spec(char *s))(va_list p, parameters_t *parameters)
 	};
 	int i = 0;
 
-	while (specifier[i].spec)
+	while (specifiers[i].specifier)
 	{
-		if (*s == specifier[i].spec[0])
+		if (*s == specifiers[i].specifier[0])
 		{
-			return (specifier[i].f);
+			return (specifiers[i].f);
 		}
 		i++;
 	}
@@ -49,13 +49,13 @@ int (*got_spec(char *s))(va_list p, parameters_t *parameters)
  * Return: num of bytes
  */
 
-int got_print(char *s, va_list p, parameters_t *parameters)
+int got_print(char *s, va_list p, params_t *params)
 {
-	int (*f)(va_list, parameters_t *) = got_spec(s);
+	int (*f)(va_list, params_t *) = got_spec(s);
 
 	if (f)
 	{
-		return (f(p, parameters));
+		return (f(p, params));
 	}
 	return (0);
 }
@@ -64,31 +64,31 @@ int got_print(char *s, va_list p, parameters_t *parameters)
  * got_flag - find flag function
  *
  * @s: format string
- * @parameters: parameters struct
+ * @params: parameters struct
  *
  * Return: int
  */
 
-int got_flag(char *s, parameters_t *parameters)
+int got_flag(char *s, params_t *params)
 {
 	int i = 0;
 
 	switch (*s)
 	{
 		case '+':
-			i = parameters->plus_flag = 1;
+			i = params->plus_flag = 1;
 			break;
 		case ' ':
-			i = parameters->space_flag = 1;
+			i = params->space_flag = 1;
 			break;
 		case '#':
-			i = parameters->hashtag_flag = 1;
+			i = params->hashtag_flag = 1;
 			break;
 		case '0':
-			i = parameters->zero_flag = 1;
+			i = params->zero_flag = 1;
 			break;
 		case '-':
-			i = parameters->minus_flag = 1;
+			i = params->minus_flag = 1;
 			break;
 	}
 	return (i);
@@ -98,22 +98,22 @@ int got_flag(char *s, parameters_t *parameters)
  * got_modifier - finds mod func
  *
  * @s: format string
- * @parameters: parameters struct
+ * @params: parameters struct
  *
  * Return: int
  */
 
-int got_modifier(char *s, parameters_t *parameters)
+int got_modifier(char *s, params_t *params)
 {
 	int i = 0;
 
 	switch (*s)
 	{
 		case 'h':
-			i = parameters->h_mod = 1;
+			i = params->h_mod = 1;
 			break;
 		case 'l':
-			i = parameters->l_mod = 1;
+			i = params->l_mod = 1;
 			break;
 	}
 	return (i);
@@ -123,13 +123,13 @@ int got_modifier(char *s, parameters_t *parameters)
  * got_width - gets the width
  *
  * @s: format string
- * @parameters: parameters struct
+ * @params: parameters struct
  * @p: pointer to arg
  *
  * Return: pointer
  */
 
-char *got_width(char *s, parameters_t *parameters, va_list p)
+char *got_width(char *s, params_t *params, va_list p)
 {
 	int i = 0;
 
@@ -143,6 +143,6 @@ char *got_width(char *s, parameters_t *parameters, va_list p)
 		while(_isdigit(*s))
 			i = i * 10 + (*s++ - '0');
 	}
-	parameters->width = i;
+	params->width = i;
 	return (s);
 }

@@ -4,13 +4,13 @@
  * got_prec - gets the precision from format str
  *
  * @s: format str
- * @parameters: parameters struct
+ * @params: parameters struct
  * @p: pointer to arg
  *
  * Return: pointer
  */
 
-char *got_prec(char *s, parameters_t *parameters, va_list p)
+char *got_prec(char *s, params_t *params, va_list p)
 {
 	int i = 0;
 
@@ -27,6 +27,6 @@ char *got_prec(char *s, parameters_t *parameters, va_list p)
 		while (_isdigit(*s))
 			i = i * 10 + (*s++ - '0');
 	}
-	parameters->precision = i;
+	params->precision = i;
 	return (s);
 }

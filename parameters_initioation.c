@@ -2,22 +2,22 @@
 
 /**
  * parameters_initial - clears struct fields and reset buffer
- * @parameters: parameters struct
- * @p: pointer to aruments
+ * @params: parameters struct
+ * @p: pointer to arguments
  * Return: void
  */
 
-void parameters_initial(parameters_t *parameters, va_list p)
+void parameters_initial(params_t *params, va_list p)
 {
-	parameters->unsign = 0;
-	parameters->plus_flag = 0;
-	parameters->minus_flag = 0;
-	parameters->space_flag = 0;
-	parameters->hashtag_flag = 0;
-	parameters->zero_flag = 0;
-	parameters->width = 0;
-	parameters->precision = UINT_MAX;
-	parameters->h_mod = 0;
-	parameters->l_mod = 0;
+	params->unsign = 0;
+	params->plus_flag = 0;
+	params->minus_flag = 0;
+	params->space_flag = 0;
+	params->hashtag_flag = 0;
+	params->zero_flag = 0;
+	params->width = 0;
+	params->precision = UINT_MAX;
+	params->h_mod = 0;
+	params->l_mod = 0;
 	(void)p;
 }

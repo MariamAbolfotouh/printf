@@ -27,16 +27,16 @@ int from_to(char *from, char *to, char *except)
  * rev_print - reverse the str
  *
  * @p: string
- * @parameters: parameters struct
+ * @params: params struct
  *
  * Return: num of bytes
  */
 
-int rev_print(va_list p, parameters_t *parameters)
+int rev_print(va_list p, params_t *params)
 {
 	int i, count = 0;
 	char *s = va_arg(p, char *);
-	(void)parameters;
+	(void)params;
 
 	if (s)
 	{
@@ -53,19 +53,19 @@ int rev_print(va_list p, parameters_t *parameters)
  * rot13_print - print str in rot13
  *
  * @p: string
- * @parameters: parameters sstruct
+ * @params: parameters struct
  *
  * Return: num of bytes
  */
 
-int rot13_print(va_list p, parameters_t *parameters)
+int rot13_print(va_list p, params_t *params)
 {
 	int i, n;
 	int count = 0;
 	char a[] =
 		"NOPQRSTUVWXYZABCDEFGHIJKLM	nopqrstuvwxyzabcdefghijklm";
 	char *s = va_arg(p, char *);
-	(void)parameters;
+	(void)params;
 
 	i = 0;
 	n = 0;

@@ -6,19 +6,19 @@
  * @number: num
  * @base: base
  * @flag: arg flags
- * @parameters: parameters struct
+ * @params: parameters struct
  *
  * Return: str
  */
 
-char *conv(long int number, int base, int flag, parameters_t *parameters)
+char *conv(long int number, int base, int flag, params_t *params)
 {
 	static char *arr;
 	static char buf[50];
 	char *p;
 	char sign = 0;
 	unsigned long l = number;
-	(void)parameters;
+	(void)params;
 
 	if (!(flag & CONVERT_UNSIGNED) && number < 0)
 	{
@@ -43,22 +43,22 @@ char *conv(long int number, int base, int flag, parameters_t *parameters)
  * unsigned_print - print unsigned integers numbs
  *
  * @p: pointer to arg
- * @parameters: parameters struct
+ * @params: parameters struct
  *
  * Return: bytes
  */
 
-int unsigned_print(va_list p, parameters_t *parameters)
+int unsigned_print(va_list p, params_t *params)
 {
 	unsigned long l;
 
-	if (parameters->l_mod)
+	if (params->l_mod)
 		l = (unsigned long)va_arg(p, unsigned long);
-	else if (parameters->h_mod)
+	else if (params->h_mod)
 		l = (unsigned short int)va_arg(p, unsigned int);
 	else
 		l = (unsigned int)va_arg(p, unsigned int);
-	parameters->unsign = 1;
+	params->unsign = 1;
 	return (num_print(conv(1, 10, CONVERT_UNSIGNED, parameters), parameters));
 }
 
