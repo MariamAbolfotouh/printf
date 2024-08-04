@@ -2,14 +2,16 @@
 
 /**
  * _printf - produces output according to a format
+ *
  * @format: character string
+ *
  * Return: number of characters printed
  */
 int _printf(const char *format, ...)
 {
 	va_list arg;
 	int count = 0;
-	char *s, i;
+	char *s, *i;
 	parameters_t parameters = PARAMETERS_INITIATION;
 
 	va_start(arg, format);
@@ -20,7 +22,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	for (s = (char *)format; *s; s++)
 	{
-		PARAMETERS_INITIATION(&parameters, arg);
+		parameters_initial(&parameters, arg);
 		if (*s != '%')
 		{
 			count = count + _putchar(*s);
