@@ -14,7 +14,7 @@
 #define parameters_initiation {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
 #define CONVERT_LOWERCASE	1
-#define CONVERT_UNSIGN	2
+#define CONVERT_UNSIGNED	2
 
 /**
  * struct parameters - the parameters of struct
