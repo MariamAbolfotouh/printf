@@ -35,7 +35,7 @@ int _printf(const char *format, ...)
 			s++;
 		}
 		if (!got_spec(s))
-			count = count + from_to(i, s, parameters.l_mod || 
+			count = count + from_to(i, s, parameters.l_mod ||
 				parameters.h_mod ? s - 1 : 0);
 		else
 			count = count + got_print(s, arg, &parameters);
@@ -43,20 +43,4 @@ int _printf(const char *format, ...)
 	_putchar(buffer_flush);
 	va_end(arg);
 	return (count);
-}
-
-/**
- * _strlen - Calculates the length of a string
- *
- * @s: string to be measured
- *
- * Return: the length
- */
-int _strlen(char *s)
-{
-	int len = 0;
-
-	while (s[len])
-		len++;
-	return (len);
 }
