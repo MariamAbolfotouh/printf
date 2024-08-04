@@ -59,7 +59,7 @@ int unsigned_print(va_list p, params_t *params)
 	else
 		l = (unsigned int)va_arg(p, unsigned int);
 	params->unsign = 1;
-	return (num_print(conv(1, 10, CONVERT_UNSIGNED, params), params));
+	return (num_print(conv(l, 10, CONVERT_UNSIGNED, params), params));
 }
 
 /**
