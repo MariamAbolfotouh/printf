@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * parameters_initiation - clears struct fields and reset buffer
+ * parameters_initial - clears struct fields and reset buffer
  * @parameters: parameters struct
- * @arg: pointer to aruments
+ * @p: pointer to aruments
  * Return: void
  */
 
-void parameters_initiation(parameters_t *parameters, va_list arg)
+void parameters_initial(parameters_t *parameters, va_list p)
 {
 	parameters->unsign = 0;
 	parameters->plus_flag = 0;
@@ -19,5 +19,5 @@ void parameters_initiation(parameters_t *parameters, va_list arg)
 	parameters->precision = UINT_MAX;
 	parameters->h_mod = 0;
 	parameters->l_mod = 0;
-	(void)arg;
+	(void)p;
 }
