@@ -42,7 +42,7 @@ int int_print(va_list p, params_t *params)
 		i = (short int)va_arg(p, int);
 	else
 		i = (int)va_arg(p, int);
-	return (num_print(conv(1, 10, 0, params), params));
+	return (num_print(conv(i, 10, 0, params), params));
 }
 
 /**
