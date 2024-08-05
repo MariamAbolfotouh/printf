@@ -12,7 +12,7 @@ int _strlen(char *s)
 {
 	int len = 0;
 
-	while(*s++)
+	while (*s++)
 	{
 		len++;
 	}
@@ -56,7 +56,7 @@ int num_print(char *str, params_t *params)
 	}
 	if (params->precision != UINT_MAX)
 		while (i++ < params->precision)
-			*--str= '0';
+			*--str = '0';
 	if (j)
 		*--str = '-';
 	if (!params->minus_flag)

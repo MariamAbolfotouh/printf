@@ -54,7 +54,7 @@ int HEX_print(va_list p, params_t *params)
 	else
 		i = (unsigned int)va_arg(p, unsigned int);
 
-	s = conv(i, 16, CONVERT_UNSIGNED , params);
+	s = conv(i, 16, CONVERT_UNSIGNED, params);
 	if (params->hashtag_flag && i)
 	{
 		*--s = 'X';

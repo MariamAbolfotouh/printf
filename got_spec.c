@@ -43,6 +43,7 @@ int (*got_spec(char *s))(va_list p, params_t *params)
 /**
  * got_print - finds format function
  *
+ * @params: parameters struct
  * @s: format string
  * @p: arg pointer
  *
@@ -140,7 +141,7 @@ char *got_width(char *s, params_t *params, va_list p)
 	}
 	else
 	{
-		while(_isdigit(*s))
+		while (_isdigit(*s))
 			i = i * 10 + (*s++ - '0');
 	}
 	params->width = i;
