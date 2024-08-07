@@ -17,7 +17,7 @@ int char_print(va_list p, params_t *params)
 	if (params->minus_flag)
 		count += _putchar(ch);
 	while (pad++ < params->width)
-		count += _putchar(ch);
+		count += _putchar(c);
 	if (!params->minus_flag)
 		count += _putchar(ch);
 	return (count);
